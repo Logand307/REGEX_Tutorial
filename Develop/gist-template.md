@@ -9,6 +9,7 @@ Regex is a shorthand term used to describe the concept of regular expressions wi
 I will explain how the Regex expression below will be used to specificy a pattern for a email address. An example of an email address that meets these requirements is ldavis0123-_3@email.test.com
 
 ```
+
 /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
 
 ```
@@ -40,6 +41,7 @@ Anchors help to specify where the expression begins and ends, as well that desig
 $ - marks the end of the expression
 
 ```
+
 /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
 
 ```
@@ -53,11 +55,21 @@ Quantifiers specify how many instances of a character, group, or character class
 The first group within our example above includes the quantifier "+" at the end. What this snippet is doing is confirming that the input has letters that are only lowercase, numbers that are only 0-9, and only include "-" or "_". If these requirements are not met, the test for the expression will not pass.
 
 ```
+
 ([a-z0-9_\.-]+)
 
 ```
 
 ### OR Operator
+
+The OR Operator is used for a concept known as Alternation within regular expressions. It is denoted with a vertical line character |. Our example of an email address does not include an OR operator, but I have provided the example below for reference.
+
+```
+I love MySQL2|MongoDB matches I love MySQL2 or MongoDB.
+I love (MySQL2|MongoDB) matches I love MySQL2 or I love MongoDB.
+
+```
+
 
 ### Character Classes
 
