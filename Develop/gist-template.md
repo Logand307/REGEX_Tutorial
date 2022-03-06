@@ -1,7 +1,6 @@
-# Title (replace with your title)
+# Logan's Regex: Email Matching Tutorial
 
-Introductory paragraph (replace this with your text)
-
+Check out my tutorial below on matching email Regex style!
 ## Summary
 
 Regex is a shorthand term used to describe the concept of regular expressions within the world of coding. Regular expressions are sequences of characters that specify a search pattern within text, and are particularly useful for defining filters. 
@@ -72,6 +71,18 @@ I love (MySQL2|MongoDB) matches I love MySQL2 or I love MongoDB.
 
 
 ### Character Classes
+
+Character classes distinguish kinds of characters such as, for example, distinguishing between letters and digits.
+
+```
+
+/^([a-z0-9_\.-]+)@
+([\da-z\.-]+)\.
+([a-z\.]{2,6})$/
+
+```
+
+In the our email example above, I have split the expression across three lines for better undertstanding. Each line signifies a character set denoted by []. This is ensuring that the input matches any character within the set (i.e. lowercase letters a-z, or any digit character \d).
 
 ### Flags
 
