@@ -8,9 +8,7 @@ Regex is a shorthand term used to describe the concept of regular expressions wi
 I will explain how the Regex expression below will be used to specificy a pattern for a email address. An example of an email address that meets these requirements is ldavis0123-_3@email.test.com
 
 ```
-
 /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
-
 ```
 
 
@@ -40,9 +38,7 @@ Anchors help to specify where the expression begins and ends, as well that desig
 $ - marks the end of the expression
 
 ```
-
 /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
-
 ```
 
 As you can see in our username Regex above, the ^ signifies the beginning of the expression, the requirements are between the parenthesis and $ signifies the ending of the expression.
@@ -54,9 +50,7 @@ Quantifiers specify how many instances of a character, group, or character class
 The first group within our example above includes the quantifier "+" at the end. What this snippet is doing is confirming that the input has letters that are only lowercase, numbers that are only 0-9, and only include "-" or "_". If these requirements are not met, the test for the expression will not pass.
 
 ```
-
 ([a-z0-9_\.-]+)
-
 ```
 
 ### OR Operator
@@ -66,7 +60,6 @@ The OR Operator is used for a concept known as Alternation within regular expres
 ```
 I love MySQL2|MongoDB matches I love MySQL2 or MongoDB.
 I love (MySQL2|MongoDB) matches I love MySQL2 or I love MongoDB.
-
 ```
 
 
@@ -75,18 +68,39 @@ I love (MySQL2|MongoDB) matches I love MySQL2 or I love MongoDB.
 Character classes distinguish kinds of characters such as, for example, distinguishing between letters and digits.
 
 ```
-
 /^([a-z0-9_\.-]+)@
 ([\da-z\.-]+)\.
 ([a-z\.]{2,6})$/
-
 ```
 
 In the our email example above, I have split the expression across three lines for better undertstanding. Each line signifies a character set denoted by []. This is ensuring that the input matches any character within the set (i.e. lowercase letters a-z, or any digit character \d).
 
 ### Flags
 
+Javascript has a total of six Flags that affect searches - I have listed them below for reference:
+
+```
+i - With this flag the search is case-insensitive: no difference between A and a.
+g - With this flag the search looks for all matches, without it – only the first match is returned.
+m - Multiline mode.
+s - Enables “dotall” mode, that allows a dot . to match newline character \n.
+u - Enables full Unicode support. The flag enables correct processing of surrogate pairs.
+y - “Sticky” mode: searching at the exact position in the text.
+```
+
 ### Grouping and Capturing
+
+Grouping and Capturing is the act of using () to capture part of a group with the specific pairing for an ID. This allows you to add quantifiers to the search and matches all that is enclosed within that group.
+
+Our email address example includes three groups, which I have designated below:
+
+```
+([a-z0-9_\.-]+)
+([\da-z\.-]+)
+([a-z\.]{2,6})
+```
+
+
 
 ### Bracket Expressions
 
