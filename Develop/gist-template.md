@@ -33,9 +33,9 @@ I will explain how the Regex expression below will be used to specificy a patter
 
 Anchors help to specify where the expression begins and ends, as well that designating what is between the start and finish.
 
-^ - can be referred to as hat or caret marks the start of the expression
+* ^ - can be referred to as hat or caret marks the start of the expression
 
-$ - marks the end of the expression
+* $ - marks the end of the expression
 
 ```
 /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
@@ -45,9 +45,9 @@ As you can see in our username Regex above, the ^ signifies the beginning of the
 
 ### Quantifiers
 
-Quantifiers specify how many instances of a character, group, or character class must be present in the input for a match to be found.
+* Quantifiers specify how many instances of a character, group, or character class must be present in the input for a match to be found.
 
-The first group within our example above includes the quantifier "+" at the end. What this snippet is doing is confirming that the input has letters that are only lowercase, numbers that are only 0-9, and only include "-" or "_". If these requirements are not met, the test for the expression will not pass.
+* The first group within our example above includes the quantifier "+" at the end. What this snippet is doing is confirming that the input has letters that are only lowercase, numbers that are only 0-9, and only include "-" or "_". If these requirements are not met, the test for the expression will not pass.
 
 ```
 ([a-z0-9_\.-]+)
@@ -55,7 +55,7 @@ The first group within our example above includes the quantifier "+" at the end.
 
 ### OR Operator
 
-The OR Operator is used for a concept known as Alternation within regular expressions. It is denoted with a vertical line character |. Our example of an email address does not include an OR operator, but I have provided the example below for reference.
+* The OR Operator is used for a concept known as Alternation within regular expressions. It is denoted with a vertical line character |. Our example of an email address does not include an OR operator, but I have provided the example below for reference.
 
 ```
 I love MySQL2|MongoDB matches I love MySQL2 or MongoDB.
@@ -65,7 +65,7 @@ I love (MySQL2|MongoDB) matches I love MySQL2 or I love MongoDB.
 
 ### Character Classes
 
-Character classes distinguish kinds of characters such as, for example, distinguishing between letters and digits.
+* Character classes distinguish kinds of characters such as, for example, distinguishing between letters and digits.
 
 ```
 /^([a-z0-9_\.-]+)@
@@ -73,11 +73,11 @@ Character classes distinguish kinds of characters such as, for example, distingu
 ([a-z\.]{2,6})$/
 ```
 
-In the our email example above, I have split the expression across three lines for better undertstanding. Each line signifies a character set denoted by []. This is ensuring that the input matches any character within the set (i.e. lowercase letters a-z, or any digit character \d).
+* In the our email example above, I have split the expression across three lines for better undertstanding. Each line signifies a character set denoted by []. This is ensuring that the input matches any character within the set (i.e. lowercase letters a-z, or any digit character \d).
 
 ### Flags
 
-Javascript has a total of six Flags that affect searches - I have listed them below for reference:
+* Javascript has a total of six Flags that affect searches - I have listed them below for reference:
 
 ```
 i - With this flag the search is case-insensitive: no difference between A and a.
@@ -90,7 +90,7 @@ y - “Sticky” mode: searching at the exact position in the text.
 
 ### Grouping and Capturing
 
-Grouping and Capturing is the act of using () to capture part of a group with the specific pairing for an ID. This allows you to add quantifiers to the search and matches all that is enclosed within that group.
+* Grouping and Capturing is the act of using () to capture part of a group with the specific pairing for an ID. This allows you to add quantifiers to the search and matches all that is enclosed within that group.
 
 Our email address example includes three groups, which I have designated below:
 
@@ -100,17 +100,58 @@ Our email address example includes three groups, which I have designated below:
 ([a-z\.]{2,6})
 ```
 
-
-
 ### Bracket Expressions
+
+* Brackets indicate a set of characters to match. Any individual character between the brackets will match, and you can also use a hyphen to define a set. Our email address exmaple includes a set of brackets within each group, which I have designated below:
+
+```
+[a-z0-9_\.-]
+[\da-z\.-]
+[a-z\.]
+```
 
 ### Greedy and Lazy Match
 
+* For a Greedy Match, the regular expression engine uses the following algorithm:
+    * For every position in the string
+    * Try to match the pattern at that position.
+    * If there’s no match, go to the next position.
+
+* For a Lazy Match, the regular expression engine will do the opposite of a Greedy Match which is to only repeat the search a minimal number of times. 
+    * Lazy Match is enabled by putting a question mark '?' after the quantifier, so that it becomes *? or +? or even ?? for '?'.
+
 ### Boundaries
 
-### Back-references
+The following three positions are qualified as word boundaries:
+
+* Before the first character in a string if the first character is a word character.
+* After the last character in a string if the last character is a word character.
+* Between two characters in a string if one is a word character and the other is not.
+
+\b allows you to perform a “whole words only” search using a regular expression in the form of \bword\b.
+
 
 ### Look-ahead and Look-behind
+
+* Lookahead and lookbehind (together referred to as lookaround) allows us to find only matches for a pattern that are located before or after another pattern. Please see example below:
+
+```
+let str = "1 mint costs 30¢";
+
+alert( str.match(/\d+(?=€)/) ); // 30, the number 1 is ignored, as it's not followed by ¢
+```
+
+### References
+
+https://www.regular-expressions.info/
+
+https://javascript.info/
+
+https://www.javascripttutorial.net/
+
+https://developer.mozilla.org/en-US/
+
+
 
 ## Author
 
