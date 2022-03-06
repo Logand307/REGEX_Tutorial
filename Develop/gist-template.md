@@ -17,15 +17,11 @@ I will explain how the Regex expression below will be used to specificy a patter
 
 - [Anchors](#anchors)
 - [Quantifiers](#quantifiers)
-- [OR Operator](#or-operator)
 - [Character Classes](#character-classes)
-- [Flags](#flags)
 - [Grouping and Capturing](#grouping-and-capturing)
 - [Bracket Expressions](#bracket-expressions)
-- [Greedy and Lazy Match](#greedy-and-lazy-match)
-- [Boundaries](#boundaries)
 - [Back-references](#back-references)
-- [Look-ahead and Look-behind](#look-ahead-and-look-behind)
+
 
 ## Regex Components
 
@@ -53,16 +49,6 @@ As you can see in our username Regex above, the ^ signifies the beginning of the
 ([a-z0-9_\.-]+)
 ```
 
-### OR Operator
-
-* The OR Operator is used for a concept known as Alternation within regular expressions. It is denoted with a vertical line character |. Our example of an email address does not include an OR operator, but I have provided the example below for reference.
-
-```
-I love MySQL2|MongoDB matches I love MySQL2 or MongoDB.
-I love (MySQL2|MongoDB) matches I love MySQL2 or I love MongoDB.
-```
-
-
 ### Character Classes
 
 * Character classes distinguish kinds of characters such as, for example, distinguishing between letters and digits.
@@ -75,18 +61,7 @@ I love (MySQL2|MongoDB) matches I love MySQL2 or I love MongoDB.
 
 * In the our email example above, I have split the expression across three lines for better undertstanding. Each line signifies a character set denoted by []. This is ensuring that the input matches any character within the set (i.e. lowercase letters a-z, or any digit character \d).
 
-### Flags
 
-* Javascript has a total of six Flags that affect searches - I have listed them below for reference:
-
-```
-i - With this flag the search is case-insensitive: no difference between A and a.
-g - With this flag the search looks for all matches, without it – only the first match is returned.
-m - Multiline mode.
-s - Enables “dotall” mode, that allows a dot . to match newline character \n.
-u - Enables full Unicode support. The flag enables correct processing of surrogate pairs.
-y - “Sticky” mode: searching at the exact position in the text.
-```
 
 ### Grouping and Capturing
 
@@ -102,7 +77,7 @@ Our email address example includes three groups, which I have designated below:
 
 ### Bracket Expressions
 
-* Brackets indicate a set of characters to match. Any individual character between the brackets will match, and you can also use a hyphen to define a set. Our email address exmaple includes a set of brackets within each group, which I have designated below:
+* Brackets indicate a set of characters to match. Any individual character between the brackets will match, and you can also use a hyphen to define a set. Our email address example includes a set of brackets within each group, which I have designated below:
 
 ```
 [a-z0-9_\.-]
@@ -110,38 +85,7 @@ Our email address example includes three groups, which I have designated below:
 [a-z\.]
 ```
 
-### Greedy and Lazy Match
-
-* For a Greedy Match, the regular expression engine uses the following algorithm:
-    * For every position in the string
-    * Try to match the pattern at that position.
-    * If there’s no match, go to the next position.
-
-* For a Lazy Match, the regular expression engine will do the opposite of a Greedy Match which is to only repeat the search a minimal number of times. 
-    * Lazy Match is enabled by putting a question mark '?' after the quantifier, so that it becomes *? or +? or even ?? for '?'.
-
-### Boundaries
-
-The following three positions are qualified as word boundaries:
-
-* Before the first character in a string if the first character is a word character.
-* After the last character in a string if the last character is a word character.
-* Between two characters in a string if one is a word character and the other is not.
-
-\b allows you to perform a “whole words only” search using a regular expression in the form of \bword\b.
-
-
-### Look-ahead and Look-behind
-
-* Lookahead and lookbehind (together referred to as lookaround) allows us to find only matches for a pattern that are located before or after another pattern. Please see example below:
-
-```
-let str = "1 mint costs 30¢";
-
-alert( str.match(/\d+(?=€)/) ); // 30, the number 1 is ignored, as it's not followed by ¢
-```
-
-### References
+### Back-references
 
 https://www.regular-expressions.info/
 
